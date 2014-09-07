@@ -23,6 +23,11 @@ android {
 	defaultConfig {
 		minSdkVersion 8
 		targetSdkVersion 19
+
+        testPackageName 'org.robobinding.albumsampletest'
+        testInstrumentationRunner "android.test.InstrumentationTestRunner"
+        testHandleProfiling true
+        testFunctionalTest true
 	}
 	
 	compileOptions {
@@ -58,4 +63,6 @@ ext {
 dependencies {
 	compile "org.robobinding:robobinding:${robobindingVersion}"
     aspectPath "org.robobinding:robobinding:${robobindingVersion}"
+
+    androidTestCompile 'com.jayway.android.robotium:robotium-solo:5.2.1'
 }
