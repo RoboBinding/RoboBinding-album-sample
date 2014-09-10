@@ -4,6 +4,7 @@ buildscript {
 		maven() {
 			name 'RoboBinding AspectJPlugin Maven Repository'
 			url "https://github.com/RoboBinding/RoboBinding-aspectj-plugin/raw/master/mavenRepo"
+			//url "file://D:/git/RoboBinding-aspectj-plugin/mavenRepo"
 		}
 	}
 
@@ -31,8 +32,8 @@ android {
 	}
 	
 	compileOptions {
-		sourceCompatibility JavaVersion.VERSION_1_7
-		targetCompatibility JavaVersion.VERSION_1_7
+		sourceCompatibility JavaVersion.VERSION_1_6
+		targetCompatibility JavaVersion.VERSION_1_6
 	}
 
     buildTypes {
