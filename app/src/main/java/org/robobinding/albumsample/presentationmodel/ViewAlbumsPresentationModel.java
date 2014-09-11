@@ -7,6 +7,7 @@ import org.robobinding.albumsample.model.Album;
 import org.robobinding.albumsample.store.AlbumStore;
 import org.robobinding.annotation.ItemPresentationModel;
 import org.robobinding.aspects.PresentationModel;
+import org.robobinding.presentationmodel.PresentationModelChangeSupport;
 import org.robobinding.widget.adapterview.ItemClickEvent;
 
 import android.util.Log;
@@ -22,10 +23,12 @@ public class ViewAlbumsPresentationModel {
 
     private final ViewAlbumsView view;
     private final AlbumStore albumStore;
+    private final PresentationModelChangeSupport changeSupport;
 
     public ViewAlbumsPresentationModel(ViewAlbumsView view, AlbumStore albumStore) {
 	this.view = view;
 	this.albumStore = albumStore;
+        this.changeSupport = new PresentationModelChangeSupport(this);
     }
 
     @ItemPresentationModel(AlbumItemPresentationModel.class)
@@ -35,7 +38,7 @@ public class ViewAlbumsPresentationModel {
     }
 
     public void refreshAlbums() {
-	firePropertyChange("albums");
+        changeSupport.firePropertyChange("albums");
     }
 
     public void createAlbum() {

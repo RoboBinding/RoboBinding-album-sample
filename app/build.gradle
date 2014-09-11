@@ -53,17 +53,21 @@ repositories {
 	maven() {
 		name 'SonaType snapshot repository'
 		url 'https://oss.sonatype.org/content/repositories/snapshots'
-	}
+        //url "file://D:/git/RoboBinding/framework/mavenRepo"
+    }
 }
 
 ext {
 	robobindingVersion = 'latest.integration'
-	//robobindingVersion = '0.8.6-SNAPSHOT'
 }
 
 dependencies {
-	compile "org.robobinding:robobinding:${robobindingVersion}"
-    aspectPath "org.robobinding:robobinding:${robobindingVersion}"
+	compile ("org.robobinding:robobinding:$robobindingVersion:with-aop-and-dependencies") {
+        exclude group: 'com.google.guava', module: 'guava'
+    }
+    aspectPath ("org.robobinding:robobinding:$robobindingVersion:with-aop-and-dependencies") {
+        exclude group: 'com.google.guava', module: 'guava'
+    }
 
     androidTestCompile 'com.jayway.android.robotium:robotium-solo:5.2.1'
 }

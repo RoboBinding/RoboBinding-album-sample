@@ -1,7 +1,5 @@
 package org.robobinding.albumsample.model;
 
-import org.robobinding.internal.guava.Objects;
-
 /**
  * @since 1.0
  * @author Cheng Wei
@@ -57,7 +55,7 @@ public class Album {
 
 	@Override
 	public int hashCode() {
-		return Objects.hashCode(id);
+		return System.identityHashCode(id);
 	}
 
 	@Override
