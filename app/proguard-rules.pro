@@ -56,14 +56,18 @@
   public static final android.os.Parcelable$Creator *;
 }
 
+##########################
+### For robobinding
+##########################
 -keepattributes *Annotation*,Signature
 
 -keep class * implements org.robobinding.property.ObservableBean {
     public *** *(...);
 }
 
--keepclassmembers class * extends org.robobinding.widget.view.ViewListeners {
+-keepclassmembers class * implements org.robobinding.viewattribute.ViewListeners {
 	public <init>(...);
 }
 
 -dontwarn android.widget.AbsListView, android.view.View
+-dontwarn javax.annotation.**
