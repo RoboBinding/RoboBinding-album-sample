@@ -25,7 +25,7 @@ android {
 		minSdkVersion 8
 		targetSdkVersion 19
 
-        testPackageName 'org.robobinding.albumsampletest'
+        testApplicationId 'org.robobinding.albumsampletest'
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
         testHandleProfiling true
         testFunctionalTest true
@@ -35,16 +35,26 @@ android {
 		sourceCompatibility JavaVersion.VERSION_1_6
 		targetCompatibility JavaVersion.VERSION_1_6
 	}
+	
+	lintOptions {
+		disable 'UnusedAttribute', 'ValidFragment', 'GradleDependency', 'OnClick', 'MissingPrefix', 'MenuTitle'
+	}
+
+	signingConfigs {
+		release {
+			storeFile file('robobinding.keystore')
+			storePassword '123456'
+			keyAlias 'robobinding'
+			keyPassword '123456'
+		}
+	}
 
     buildTypes {
         release {
-            runProguard false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            runProguard true
+            proguardFiles 'proguard-rules.pro'
+			signingConfig signingConfigs.release
         }
-    }
-
-    lintOptions {
-        disable 'UnusedAttribute', 'ValidFragment', 'GradleDependency', 'OnClick', 'MissingPrefix', 'MenuTitle'
     }
 }
 
