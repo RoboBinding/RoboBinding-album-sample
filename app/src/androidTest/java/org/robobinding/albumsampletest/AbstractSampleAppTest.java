@@ -19,7 +19,7 @@ public abstract class AbstractSampleAppTest extends ActivityInstrumentationTestC
     protected AlbumStore albumStore;
 
     public AbstractSampleAppTest() {
-	super(HomeActivity.class.getPackage().getName(), HomeActivity.class);
+	super(HomeActivity.class);
     }
 
     protected void setUp() throws Exception {
