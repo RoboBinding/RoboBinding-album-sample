@@ -10,11 +10,13 @@ buildscript {
 
 	dependencies {
 		classpath 'com.android.tools.build:gradle:0.12.2'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.+'
 		classpath 'org.robobinding:aspectj-plugin:0.8.+'
 	}
 }
 
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'org.robobinding.android-aspectj'
 
 android {
@@ -65,10 +67,20 @@ repositories {
 		url 'https://oss.sonatype.org/content/repositories/snapshots'
         //url "file://D:/git/RoboBinding/framework/mavenRepo"
     }
+    /*
+    maven() {
+        name 'RoboBinding Framework Maven Repository'
+        url "file://D:/git/RoboBinding/framework/mavenRepo"
+    }
+    maven() {
+        name 'RoboBinding CodeGen Maven Repository'
+        url "file://D:/git/RoboBinding/codegen/mavenRepo"
+    }*/
 }
 
 ext {
 	robobindingVersion = 'latest.integration'
+    //robobindingVersion = '0.8.8'
 }
 
 dependencies {
@@ -80,6 +92,7 @@ dependencies {
     aspectPath ("org.robobinding:robobinding:$robobindingVersion:with-aop-and-dependencies") {
         exclude group: 'com.google.guava', module: 'guava'
     }
+    apt "org.robobinding:codegen:$robobindingVersion"
 
     androidTestCompile 'com.jayway.android.robotium:robotium-solo:5.2.1'
 }

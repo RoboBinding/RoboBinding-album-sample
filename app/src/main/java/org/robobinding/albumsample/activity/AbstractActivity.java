@@ -8,28 +8,27 @@ import android.app.Activity;
 import android.view.View;
 
 /**
- *
- * @since 1.0
- * @version $Revision: 1.0 $
  * @author Cheng Wei
+ * @version $Revision: 1.0 $
+ * @since 1.0
  */
 public abstract class AbstractActivity extends Activity {
     public void initializeContentView(int layoutId, Object presentationModel) {
-	ViewBinder viewBinder = createViewBinder();
-	View rootView = viewBinder.inflateAndBind(layoutId, presentationModel);
-	setContentView(rootView);
+        ViewBinder viewBinder = createViewBinder(true);
+        View rootView = viewBinder.inflateAndBind(layoutId, presentationModel);
+        setContentView(rootView);
     }
-    
-    private ViewBinder createViewBinder() {
-	BinderFactory binderFactory = getAlbumApp().getReusableBinderFactory();
-	return binderFactory.createViewBinder(this);
+
+    protected ViewBinder createViewBinder(boolean withPreInitializingViews) {
+        BinderFactory binderFactory = getAlbumApp().getReusableBinderFactory();
+        return binderFactory.createViewBinder(this, withPreInitializingViews);
     }
-    
+
     private AlbumApp getAlbumApp() {
-	return (AlbumApp)getApplicationContext();
+        return (AlbumApp) getApplicationContext();
     }
-    
+
     public AlbumStore getAlbumStore() {
-	return getAlbumApp().getAlbumStore();
+        return getAlbumApp().getAlbumStore();
     }
 }

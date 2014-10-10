@@ -8,10 +8,9 @@ import org.robobinding.albumsample.presentationmodel.CreateEditAlbumView;
 import android.os.Bundle;
 
 /**
- *
- * @since 1.0
  * @author Cheng Wei
  * @author Robert Taylor
+ * @since 1.0
  */
 public class CreateEditAlbumActivity extends AbstractActivity implements CreateEditAlbumView {
 
@@ -19,28 +18,28 @@ public class CreateEditAlbumActivity extends AbstractActivity implements CreateE
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-	super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);
 
-	long albumId = getIntent().getLongExtra(ALBUM_ID, Album.NO_ID);
-	
-	Album.Builder albumBuilder;
-	if (Album.isNew(albumId))
-		albumBuilder = new Album.Builder();
-	else {
-		Album album = getAlbumStore().get(albumId);
-		albumBuilder = album.createBuilder();
-	}
+        long albumId = getIntent().getLongExtra(ALBUM_ID, Album.NO_ID);
+
+        Album.Builder albumBuilder;
+        if (Album.isNew(albumId))
+            albumBuilder = new Album.Builder();
+        else {
+            Album album = getAlbumStore().get(albumId);
+            albumBuilder = album.createBuilder();
+        }
 
 
-	CreateEditAlbumPresentationModel presentationModel = new CreateEditAlbumPresentationModel(this, getAlbumStore(), albumBuilder);
-	initializeContentView(R.layout.activity_create_edit_album, presentationModel);
+        CreateEditAlbumPresentationModel presentationModel = new CreateEditAlbumPresentationModel(this, getAlbumStore(), albumBuilder);
+        initializeContentView(R.layout.activity_create_edit_album, presentationModel);
     }
-    
+
     @Override
     public void finishActivity() {
         finish();
     }
-   
+
     @Override
     public String getCreateAlbumTitle() {
         return getString(R.string.create_album);

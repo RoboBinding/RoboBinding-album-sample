@@ -8,22 +8,21 @@ import android.content.Intent;
 import android.os.Bundle;
 
 /**
- * 
- * @since 1.0
  * @author Cheng Wei
  * @author Robert Taylor
+ * @since 1.0
  */
 public class HomeActivity extends AbstractActivity implements HomeView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-	super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);
 
-	HomePresentationModel presentationModel = new HomePresentationModel(this);
-	initializeContentView(R.layout.activity_home, presentationModel);
+        HomePresentationModel presentationModel = new HomePresentationModel(this);
+        initializeContentView(R.layout.activity_home, presentationModel);
     }
 
     @Override
     public void showAlbums() {
-	startActivity(new Intent(this, ViewAlbumsActivity.class));
+        startActivity(new Intent(this, ViewAlbumsActivity.class));
     }
 }

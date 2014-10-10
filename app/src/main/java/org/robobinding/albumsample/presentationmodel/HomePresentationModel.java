@@ -1,22 +1,21 @@
 package org.robobinding.albumsample.presentationmodel;
 
-import org.robobinding.aspects.PresentationModel;
+import org.robobinding.annotation.PresentationModel;
 
 /**
- * 
- * @since 1.0
  * @author Cheng Wei
  * @author Robert Taylor
+ * @since 1.0
  */
 @PresentationModel
 public class HomePresentationModel {
     private final HomeView view;
 
     public HomePresentationModel(HomeView view) {
-	this.view = view;
+        this.view = view;
     }
 
     public void albums() {
-	view.showAlbums();
+        view.showAlbums();
     }
 }
