@@ -29,7 +29,6 @@
 -keep public class * extends android.content.ContentProvider
 -keep public class * extends android.app.backup.BackupAgentHelper
 -keep public class * extends android.preference.Preference
--keep public class com.android.vending.licensing.ILicensingService
 
 -keepclasseswithmembernames class * {
     native <methods>;
@@ -61,12 +60,18 @@
 ##########################
 -keepattributes *Annotation*,Signature
 
--keep class * implements org.robobinding.property.ObservableBean {
-    public *** *(...);
-}
+#-keep @org.robobinding.annotation.PresentationModel class * {
+#    public *** *(...);
+#}
 
 -keepclassmembers class * implements org.robobinding.viewattribute.ViewListeners {
 	public <init>(...);
+}
+
+-keepnames class * extends org.robobinding.presentationmodel.AbstractPresentationModelObject {
+}
+
+-keepnames class * extends org.robobinding.presentationmodel.AbstractItemPresentationModelObject {
 }
 
 -dontwarn android.widget.AbsListView, android.view.View
