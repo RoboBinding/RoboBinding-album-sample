@@ -62,13 +62,13 @@ android {
 
 repositories {
 	mavenCentral()
-	maven() {
+ 	maven() {
 		name 'SonaType snapshot repository'
 		url 'https://oss.sonatype.org/content/repositories/snapshots'
         //url "file://D:/git/RoboBinding/framework/mavenRepo"
     }
     /*
-    maven() {
+   maven() {
         name 'RoboBinding Framework Maven Repository'
         url "file://D:/git/RoboBinding/framework/mavenRepo"
     }
