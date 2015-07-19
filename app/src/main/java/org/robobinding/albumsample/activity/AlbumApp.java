@@ -6,6 +6,8 @@ import org.robobinding.binder.BinderFactory;
 import org.robobinding.binder.BinderFactoryBuilder;
 
 import android.app.Application;
+import android.view.View;
+import android.widget.TextView;
 
 /**
  *
@@ -21,7 +23,9 @@ public class AlbumApp extends Application {
     public void onCreate() {
         super.onCreate();
         
-        reusableBinderFactory = new BinderFactoryBuilder().build();
+        reusableBinderFactory = new BinderFactoryBuilder()
+                .add(new ViewBindingForView().extend(View.class))
+                .build();
         albumStore = new MemoryAlbumStore();
         
         TestData testData = new TestData();
