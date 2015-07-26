@@ -1,3 +1,5 @@
+**Note:** issue the following in command line - 'gradlew build --refresh-dependencies' in Windows or './gradlew build --refresh-dependencies' in Linux or Mac to force update to the latest RoboBinding snapshot when required.
+
 An android translation(based on RoboBinding) of Album Sample app from Martin Fowler's original article on http://martinfowler.com/eaaDev/PresentationModel.html[Presentation Model(MVVM)] pattern.
 
 The project can be directly imported into Android Studio.
